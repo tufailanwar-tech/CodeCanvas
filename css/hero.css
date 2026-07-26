@@ -80,6 +80,19 @@ main{
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 40px rgba(139,92,246,.15);
+  position: relative;
+}
+
+.editor::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:radial-gradient(
+    rgba(139,92,246,.2),
+    transparent 70%
+  );
+  z-index:-1;
+  filter:blur(60px);
 }
 
 /* Header */
@@ -165,6 +178,22 @@ main{
   padding:25px;
   border-right:1px solid rgba(255,255,255,.08);
   overflow:auto;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.line-number{
+  display:flex;
+  flex-direction:column;
+  color:#6B7280;
+  text-align:right;
+  user-select:none;
+}
+
+.line-number span{
+  line-height:1.8;
+  font-size:.95rem;
 }
 
 .code-section pre{
@@ -176,6 +205,7 @@ main{
   "Fira Code",
   Consolas,
   monospace;
+  margin:0;
 }
 
 .code-section code{
