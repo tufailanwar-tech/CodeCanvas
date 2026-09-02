@@ -359,7 +359,7 @@
   }
 
   .how-top {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .how-step {
@@ -368,34 +368,35 @@
   }
 
   .intro-box {
-    width: 200px;
-    height: 80px;
-    font-size: 18px;
+    width: 180px;
+    height: 70px;
+    font-size: 16px;
   }
 
   .intro-box h2 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .intro-box.expand {
     width: 100%;
-    max-width: 600px;
-    height: 120px;
+    max-width: 500px;
+    height: 110px;
   }
 
   .steps {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
   .step-card {
     padding: 16px;
+    gap: 12px;
   }
 
   .step-icon {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     font-size: 16px;
   }
 
@@ -405,10 +406,15 @@
 
   .step-card p {
     font-size: 12px;
+    line-height: 1.4;
   }
 
   .how-heading {
     font-size: 28px;
+  }
+
+  .how-subheading--para {
+    font-size: 14px;
   }
 
   .how-code-container {
@@ -430,7 +436,12 @@
 
   .editor-body {
     grid-template-columns: 1fr;
-    min-height: auto;
+    min-height: 300px;
+  }
+
+  .code-section,
+  .preview-section {
+    padding: 16px;
   }
 }
 
@@ -440,18 +451,43 @@
   }
 
   .how-step {
-    height: 160px;
+    height: 140px;
+    margin-bottom: 32px;
+  }
+
+  .intro-box {
+    width: 140px;
+    height: 60px;
+    font-size: 14px;
+  }
+
+  .intro-box h2 {
+    font-size: 14px;
+  }
+
+  .intro-box.expand {
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
   }
 
   .steps {
     grid-template-columns: 1fr;
+    padding: 0 8px;
   }
 
   .how-heading {
-    font-size: 24px;
+    font-size: 22px;
   }
 
-  .intro-box h2 {
-    font-size: 16px;
+  .how-code-container {
+    margin-top: 32px;
   }
+}
+
+
+
+
+.intro-box h2 {
+  font-size: 16px;
 }

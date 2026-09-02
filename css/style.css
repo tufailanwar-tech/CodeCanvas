@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 :root {
     /* Primary dark palette */
     --color-void: #08090a;

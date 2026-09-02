@@ -249,6 +249,10 @@
     padding: 48px 16px;
   }
 
+  .pricing-top {
+    margin-bottom: 40px;
+  }
+
   .pricing-heading {
     font-size: 28px;
   }
@@ -264,20 +268,34 @@
 
   .pricing-card {
     padding: 24px;
-    gap: 20px;
+    gap: 18px;
   }
 
   .pricing-card.pro {
     grid-column: 1;
     max-width: 100%;
+    transform: scale(1);
+  }
+
+  .pricing-recommended {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 
   .plan-name {
     font-size: 16px;
   }
 
+  .plan-price {
+    gap: 2px;
+  }
+
   .plan-price-amount {
     font-size: 28px;
+  }
+
+  .plan-price-period {
+    font-size: 13px;
   }
 
   .plan-description {
@@ -286,14 +304,108 @@
 
   .plan-features {
     gap: 10px;
+    padding-top: 12px;
+    border-top: var(--border-primary);
   }
 
   .plan-feature {
     font-size: 13px;
   }
 
+  .plan-feature-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .plan-cta {
+    padding-top: 12px;
+    border-top: var(--border-primary);
+  }
+
   .pricing-btn {
     padding: 10px 14px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-container {
+    padding: 32px 12px;
+  }
+
+  .pricing-top {
+    margin-bottom: 32px;
+    gap: 16px;
+  }
+
+  .pricing-badge {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .pricing-heading {
+    font-size: 22px;
+  }
+
+  .pricing-subheading {
+    font-size: 13px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pricing-card {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .pricing-card.pro {
+    border-color: var(--color-acid-lime);
+  }
+
+  .pricing-recommended {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  .plan-name {
+    font-size: 14px;
+  }
+
+  .plan-price-amount {
+    font-size: 24px;
+  }
+
+  .plan-price-period {
+    font-size: 12px;
+  }
+
+  .plan-description {
+    font-size: 12px;
+  }
+
+  .plan-features {
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .plan-feature {
+    font-size: 12px;
+  }
+
+  .plan-feature-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .plan-cta {
+    padding-top: 10px;
+  }
+
+  .pricing-btn {
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }

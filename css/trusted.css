@@ -112,7 +112,7 @@
   }
 
   .trusted-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -122,16 +122,16 @@
   }
 
   .trusted-title {
-    font-size: 36px;
+    font-size: 28px;
   }
 
   .trusted-description {
     font-size: 14px;
-    margin: 20px auto 40px;
+    margin: 16px auto 32px;
   }
 
   .trusted-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
@@ -140,12 +140,13 @@
   }
 
   .trusted-card i {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
   .trusted-card img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .trusted-card h3 {
@@ -163,11 +164,17 @@
   }
 
   .trusted-title {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  .trusted-description {
+    font-size: 13px;
+    margin: 12px auto 24px;
   }
 
   .trusted-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .trusted-card {
@@ -175,6 +182,20 @@
   }
 
   .trusted-card i {
-    font-size: 24px;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .trusted-card img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .trusted-card h3 {
+    font-size: 11px;
+  }
+
+  .trusted-card p {
+    font-size: 10px;
   }
 }
