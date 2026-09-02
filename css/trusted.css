@@ -58,7 +58,7 @@
 
 /* Card */
 .trusted-card {
-  padding: 20px;
+  padding: 3rem;
   background: var(--color-carbon);
   border: var(--border-primary);
   border-radius: var(--radius-md);
