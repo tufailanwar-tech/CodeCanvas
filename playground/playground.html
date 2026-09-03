@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCanvas Playground</title>
+
+    <link rel="stylesheet" href="playground.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-code"></i>
+        <span>
+          <a href="../index.html" style="color: var(--color-acid-lime); text-decoration: none;">
+              CodeCanvas
+          </a>
+        </span>
+    </div>
+
+    <div class="top-actions">
+
+        <span class="save-status">
+            <span class="status-dot"></span>
+            Auto Saved
+        </span>
+
+        <button id="clearBtn" class="action-btn">
+            <i class="fa-regular fa-trash-can"></i>
+            Clear
+        </button>
+
+        <button id="saveBtn" class="action-btn">
+            <i class="fa-regular fa-floppy-disk"></i>
+            Save
+        </button>
+
+        <button id="runBtn" class="run-btn js-run-btn">
+            <i class="fa-solid fa-play"></i>
+            Run
+        </button>
+
+        <button class="icon-btn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <button class="icon-btn">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="playground">
+
+    <!-- File Explorer -->
+
+    <aside class="file-panel">
+
+        <div class="panel-title">
+            <span>FILES</span>
+
+            <div class="file-actions">
+                <button id="newFileBtn">
+                    <i class="fa-regular fa-file"></i>
+                </button>
+
+                <button>
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="file-list">
+
+            <button class="file active" data-file="html">
+                <i class="fa-brands fa-html5 html-icon"></i>
+                <span>index.html</span>
+            </button>
+
+            <button class="file" data-file="css">
+                <i class="fa-brands fa-css3-alt css-icon"></i>
+                <span>style.css</span>
+            </button>
+
+            <button class="file" data-file="js">
+                <i class="fa-brands fa-js js-icon"></i>
+                <span>script.js</span>
+            </button>
+
+        </div>
+
+        <div class="assets-title">
+            <i class="fa-solid fa-chevron-down"></i>
+            ASSETS
+        </div>
+
+        <div class="asset-item">
+            <i class="fa-regular fa-folder"></i>
+            images
+        </div>
+
+        <button id="newFileBtnBottom" class="new-file">
+            <i class="fa-solid fa-plus"></i>
+            New File
+        </button>
+
+    </aside>
+
+
+    <!-- Editor -->
+
+
+    <section class="editor-panel">
+
+        <div class="editor-header">
+
+            <div class="current-file">
+                <i id="fileIcon" class="fa-brands fa-html5 html-icon"></i>
+                <span id="fileName">index.html</span>
+            </div>
+
+            <div class="editor-type">
+                <span id="language">HTML</span>
+
+                <button id="copyBtn">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="code-editor ">
+
+            <div class="line-numbers">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+            </div>
+
+            <textarea
+                id="codeEditor"
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"><div class="container">
+        <h1>Hello, CodeCanvas! 👋</h1>
+        <p>Write code. See it live.</p>
+        <button id="btn">Click Me</button>
+</div></textarea>
+
+        </div>
+
+        <div class="editor-footer">
+
+            <span id="lineInfo">Ln 1, Col 1</span>
+            <span>Spaces: 2</span>
+            <span>UTF-8</span>
+            <span id="footerLanguage">HTML</span>
+
+            <span class="changes">
+                <span class="status-dot"></span>
+                All changes saved
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- Preview -->
+
+    <section class="preview-panel">
+
+        <div class="preview-header">
+
+            <div>
+                <i class="fa-solid fa-globe"></i>
+                Live Preview
+            </div>
+
+        </div>
+
+        <iframe id="preview"></iframe>
+
+        <div class="preview-footer">
+
+            <button id="reloadBtn">
+                <i class="fa-solid fa-rotate-right"></i>
+                Reload
+            </button>
+
+            <span>100%</span>
+
+            <button>
+                <i class="fa-solid fa-display"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="playground.js"></script>
+
+</body>
+</html>
