@@ -7,32 +7,91 @@ const files = document.querySelectorAll(".file");
 const fileName = document.getElementById('fileName');
 const savedOutput = localStorage.getItem('output');
 
+
 if(savedOutput){
     preview.srcdoc=savedOutput;
 }else{
     runCode();
 }
+let currentFile = 'html';
+
+const htmlCode = `
+    <div class="container">
+        <h1>Welcome to CodeCanvas</h1>
+        <p>Build and see your code live.</p>
+        <button>Start Coding</button>
+    </div>
+`;
+const cssCode = `
+    body {
+        margin: 0;
+        padding: 40px;
+        background: #08090a;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 80px auto;
+        text-align: center;
+    }
+
+    h1 {
+        color: #e4f222;
+    }
+
+    p {
+        color: #8a8f98;
+    }
+
+    button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        background: #e4f222;
+        color: #08090a;
+    }
+`;
+const jsCode = `
+    const button = document.querySelector("button");
+
+    button.addEventListener("click", () => {
+        alert("Welcome to CodeCanvas!");
+    });
+`;
+
+const savedHtml=localStorage.getItem('html');
+if(savedHtml==null){
+    codeEditor.value=htmlCode;
+}else{
+    codeEditor.saveHtml
+}
 function runCode(){
   runBtn.addEventListener('click',()=>{
     
-    const html = localStorage.getItem('html') || htmlCode;
-    const css = localStorage.getItem('css') || cssCode;
-    const js = localStorage.getItem('js') || jsCode;
+    const html = localStorage.getItem('html');
+    const css = localStorage.getItem('css');
+    const js = localStorage.getItem('js');
+
+    const finalHtml = html === null ? htmlCode : html;
+    const finalCss = css === null ? cssCode : css;
+    const finalJs = js === null ? jsCode : js;
 
     const output = `
         <!DOCTYPE html>
         <html>
             <head>
                 <style>
-                    ${css}
+                    ${finalCss}
                 </style>
             </head>
 
             <body>
-                ${html}
+                ${finalHtml}
 
                 <script>
-                    ${js}
+                    ${finalJs}
                 <\/script>
             </body>
         </html>
@@ -44,58 +103,10 @@ function runCode(){
   })
 }
 
-runCode();
+runBtn.addEventListener('click', runCode);
 
-let currentFile = 'html';
-
-const htmlCode = `
-<div class="container">
-    <h1>Welcome to CodeCanvas</h1>
-    <p>Build and see your code live.</p>
-    <button>Start Coding</button>
-</div>
-`;
-const cssCode = `
-body {
-    margin: 0;
-    padding: 40px;
-    background: #08090a;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    max-width: 600px;
-    margin: 80px auto;
-    text-align: center;
-}
-
-h1 {
-    color: #e4f222;
-}
-
-p {
-    color: #8a8f98;
-}
-
-button {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    background: #e4f222;
-    color: #08090a;
-}
-`;
-const jsCode = `
-const button = document.querySelector("button");
-
-button.addEventListener("click", () => {
-    alert("Welcome to CodeCanvas!");
-});
-`;
 
 codeEditor.value = localStorage.getItem('html') || htmlCode;
-
 files.forEach((file) => {
 
     file.addEventListener('click', () => {
@@ -132,7 +143,8 @@ files.forEach((file) => {
 
 const clear=document.getElementById('clearBtn');
 clear.addEventListener('click',()=>{
-    codeEditor.value=""
+    codeEditor.value="";
+    localStorage.setItem(currentFile, "");
 })
 
 
