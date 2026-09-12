@@ -3,16 +3,50 @@ const codeEditor=document.getElementById('codeEditor');
 const preview = document.getElementById("preview");
 const files = document.querySelectorAll(".file");
 
-const currentFile=document.querySelector('.current-file');
-const fileName = document.getElementById('fileName');
 
+const fileName = document.getElementById('fileName');
+const savedOutput = localStorage.getItem('output');
+
+if(savedOutput){
+    preview.srcdoc=savedOutput;
+}else{
+    runCode();
+}
 function runCode(){
   runBtn.addEventListener('click',()=>{
-    const text=codeEditor.value;
-    preview.srcdoc=text;
+    
+    const html = localStorage.getItem('html') || htmlCode;
+    const css = localStorage.getItem('css') || cssCode;
+    const js = localStorage.getItem('js') || jsCode;
+
+    const output = `
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <style>
+                    ${css}
+                </style>
+            </head>
+
+            <body>
+                ${html}
+
+                <script>
+                    ${js}
+                <\/script>
+            </body>
+        </html>
+    `;
+
+    preview.srcdoc = output;
+    localStorage.setItem('output', output);
+
   })
 }
+
 runCode();
+
+let currentFile = 'html';
 
 const htmlCode = `
 <div class="container">
@@ -60,32 +94,49 @@ button.addEventListener("click", () => {
 });
 `;
 
+codeEditor.value = localStorage.getItem('html') || htmlCode;
+
+files.forEach((file) => {
+
+    file.addEventListener('click', () => {
+
+        localStorage.setItem(currentFile, codeEditor.value);
+
+        files.forEach((file)=>{
+            file.classList.remove('active');
+        })
+        file.classList.add('active');
+
+        const fileType = file.dataset.file;
+        currentFile = fileType;
 
 
-files.forEach((file)=>{
-  file.addEventListener('click',()=>{
-    const selectedFile = file.querySelector('span').innerText;
+        if (currentFile === 'html') {
+            codeEditor.value = localStorage.getItem('html') || htmlCode;
+        } 
+        else if (currentFile === 'css') {
+            codeEditor.value = localStorage.getItem('css') || cssCode;
+        } 
+        else {
+            codeEditor.value = localStorage.getItem('js') || jsCode;
+        }
 
-    fileName.innerText = selectedFile;
+        fileName.innerText = file.querySelector('span').innerText;
+    });
 
-    const fileType = file.dataset.file;
-    if (fileType === "html") {
-      codeEditor.value = htmlCode;
-      localStorage.setItem("html", codeEditor.value);
-    } else if (fileType === "css") {
-      codeEditor.value = cssCode;
-      localStorage.setItem("css", codeEditor.value);
+});
 
-    } else {
-      codeEditor.value = jsCode;
-      localStorage.setItem("js", codeEditor.value);
-    }
 
-  })
-  
+
+//clear button
+
+const clear=document.getElementById('clearBtn');
+clear.addEventListener('click',()=>{
+    codeEditor.value=""
 })
 
 
-
-
-
+//automatically save code
+codeEditor.addEventListener('input',()=>{
+    localStorage.setItem(currentFile,codeEditor.value);
+})
