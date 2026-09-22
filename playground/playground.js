@@ -2,11 +2,13 @@ const runBtn=document.querySelector('.js-run-btn');
 const codeEditor=document.getElementById('codeEditor');
 const preview = document.getElementById("preview");
 const files = document.querySelectorAll(".file");
-
+const lineNo=document.querySelector('.line-numbers');
 
 const fileName = document.getElementById('fileName');
 const savedOutput = localStorage.getItem('output');
 
+let history = [];
+let historyIndex = -1;
 
 if(savedOutput){
     preview.srcdoc=savedOutput;
@@ -65,11 +67,9 @@ const savedHtml=localStorage.getItem('html');
 if(savedHtml==null){
     codeEditor.value=htmlCode;
 }else{
-    codeEditor.saveHtml
+    codeEditor.value = savedHtml;
 }
 function runCode(){
-  runBtn.addEventListener('click',()=>{
-    
     const html = localStorage.getItem('html');
     const css = localStorage.getItem('css');
     const js = localStorage.getItem('js');
@@ -100,13 +100,13 @@ function runCode(){
     preview.srcdoc = output;
     localStorage.setItem('output', output);
 
-  })
+  
 }
 
 runBtn.addEventListener('click', runCode);
 
 
-codeEditor.value = localStorage.getItem('html') || htmlCode;
+
 files.forEach((file) => {
 
     file.addEventListener('click', () => {
@@ -132,23 +132,63 @@ files.forEach((file) => {
             codeEditor.value = localStorage.getItem('js') || jsCode;
         }
 
+        lineCount();
+
         fileName.innerText = file.querySelector('span').innerText;
     });
 
 });
 
+function lineCount(){
+    const lines = codeEditor.value.split('\n');
+    let count=lines.length;
+
+    lineNo.innerText = '';
+    for(let i=1;i<=count;i++){
+        lineNo.innerText+=i+'\n';
+    }
+}
+lineCount();
 
 
 //clear button
 
-const clear=document.getElementById('clearBtn');
-clear.addEventListener('click',()=>{
-    codeEditor.value="";
-    localStorage.setItem(currentFile, "");
-})
+const clear = document.getElementById('clearBtn');
+
+clear.addEventListener('click', () => {
+    saveHistory();
+
+    codeEditor.value = "";
+    codeEditor.dispatchEvent(new Event('input'));
+});
+
 
 
 //automatically save code
 codeEditor.addEventListener('input',()=>{
     localStorage.setItem(currentFile,codeEditor.value);
+    lineCount();
+})
+
+
+codeEditor.addEventListener('scroll',()=>{
+    lineNo.scrollTop=codeEditor.scrollTop;
+});
+
+codeEditor.addEventListener('keydown',(event)=>{
+    codeEditor.addEventListener('keydown', (event) => {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+
+            const position = codeEditor.selectionStart;
+
+            codeEditor.value =
+                codeEditor.value.slice(0, position) +
+                '  ' +
+                codeEditor.value.slice(position);
+
+            codeEditor.selectionStart = position + 2;
+            codeEditor.selectionEnd = position + 2;
+        }
+    });
 })

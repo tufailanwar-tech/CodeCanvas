@@ -318,6 +318,7 @@ button {
     font-size: 13px;
     line-height: 1.7;
     user-select: none;
+    overflow: hidden;
 }
 
 .line-numbers span {
