@@ -19,6 +19,12 @@ navMobileLinks.forEach(link => {
   });
 });
 
+const themeBtn = document.querySelector('.nav-theme');
+
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+});
+
 // How It Works animation
 const intro = document.getElementById("introBox");
 const steps = document.getElementById("steps");

@@ -53,6 +53,32 @@ body {
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
+
+/* =========================
+   Light Theme
+========================= */
+
+body.light-theme {
+    --color-void: #ffffff;
+    --color-carbon: #f5f5f5;
+    --color-obsidian: #eeeeee;
+    --color-graphite: #dddddd;
+    --color-smoke: #bbbbbb;
+    --color-ash: #777777;
+    --color-fog: #555555;
+    --color-mist: #333333;
+    --color-bone: #222222;
+    --color-paper: #08090a;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   Base
+========================= */
+
 html {
     scroll-behavior: smooth;
 }
@@ -63,6 +89,9 @@ body {
     color: var(--color-paper);
     font-size: 16px;
     line-height: 1.5;
+    transition:
+        background-color 200ms ease,
+        color 200ms ease;
 }
 
 a {
@@ -81,8 +110,13 @@ button {
     font-family: var(--font-family);
 }
 
-/* Responsive typography */
+
+/* =========================
+   Responsive Typography
+========================= */
+
 @media (max-width: 1024px) {
+
     :root {
         --spacing-xl: 64px;
     }
@@ -92,7 +126,9 @@ button {
     }
 }
 
+
 @media (max-width: 768px) {
+
     :root {
         --spacing-xl: 48px;
     }
@@ -102,7 +138,9 @@ button {
     }
 }
 
+
 @media (max-width: 480px) {
+
     :root {
         --spacing-xl: 32px;
     }
